@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 
 @Component({
@@ -8,14 +8,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // productName : AbstractControl;
+  // productCode : AbstractControl;
+
   title = 'app';
   myForm : FormGroup;
 
   constructor(fb: FormBuilder){
     this.myForm = fb.group({
-      'productName':['Apple Mac Pro'],
-      'productCode':['MHX213455']
-    })
+      'productName':['',Validators.required],
+      'productCode':['',Validators.required],
+    });
+  
+  //  Second Approach Commented
+  //  this.productName = this.myForm.controls['productName'];
+  //  this.productCode = this.myForm.controls['productCode'];
+
   }
 
   onsubmit(value: string){

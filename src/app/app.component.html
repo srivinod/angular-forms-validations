@@ -6,6 +6,16 @@
     <div class="card-body">
       <form [formGroup]="myForm" (ngSubmit)="onsubmit(myForm.value)">
         <div class="form-group">
+          <div *ngIf="!myForm.valid" class="alert alert-danger" role="alert">
+                All fields are mandatory
+          </div>
+          <div *ngIf="!myForm.controls['productName'].valid" class="alert alert-danger" role="alert">
+            Please enter valid product name
+          </div>
+          <div *ngIf="!myForm.controls['productCode'].valid" class="alert alert-danger" role="alert">
+              Please enter valid product code
+          </div>   
+                    
           <label for="text">Product Name :</label>
           <input type="Name"
             class="form-control" 
@@ -14,10 +24,12 @@
         </div>  
         
         <div class="form-group">
+       
           <label for="text">Product Code :</label>            
           <input type="text"
             id=""
             class="form-control"
+            placeholder="Enter product code"
             [formControl]="myForm.controls['productCode']">
         </div>
         
