@@ -8,8 +8,11 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // productName : AbstractControl;
-  // productCode : AbstractControl;
+  productName : AbstractControl;
+  productCode : AbstractControl;
+
+  pName : string;
+  pCode : string;
 
   title = 'app';
   myForm : FormGroup;
@@ -20,10 +23,22 @@ export class AppComponent {
       'productCode':['',Validators.required],
     });
   
-  //  Second Approach Commented
-  //  this.productName = this.myForm.controls['productName'];
-  //  this.productCode = this.myForm.controls['productCode'];
+  this.productName = this.myForm.controls['productName'];
+  this.productCode = this.myForm.controls['productCode'];
 
+      this.productName.valueChanges.subscribe(
+        (pNameValue:string) => {
+          console.log("Entered Product Name :", pNameValue);
+          this.pName = pNameValue;
+        }
+      );
+
+      this.productCode.valueChanges.subscribe(
+        (pCodeValue:string) =>{
+          console.log("Entered Product Code :", pCodeValue);
+          this.pCode = pCodeValue;
+        }
+      );
   }
 
   onsubmit(value: string){

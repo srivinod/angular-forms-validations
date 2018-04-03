@@ -39,3 +39,13 @@
     </div>
   </div>
 </div>
+
+<div class="col" *ngIf="pName || pCode">
+<h5>Output:</h5>
+<div class="text-muted">
+  <span *ngIf="pName"> Entered Product Name : {{ pName }} </span>
+  <br>
+  <span *ngIf="pCode"> Entered Product Code : {{ pCode }} </span>
+
+</div>
+</div>
