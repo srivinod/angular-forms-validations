@@ -4,13 +4,25 @@
 
   <div class="card my-5">
     <div class="card-body">
-      <form action="">
+      <form [formGroup]="myForm" (ngSubmit)="onsubmit(myForm.value)">
         <div class="form-group">
           <label for="text">Product Name :</label>
-          <input type="Name" class="form-control" name="" id="" placeholder="Enter product name">
+          <input type="Name"
+            class="form-control" 
+            placeholder="Enter product name"
+            [formControl]="myForm.controls['productName']">
+        </div>  
+        
+        <div class="form-group">
+          <label for="text">Product Code :</label>            
+          <input type="text"
+            id=""
+            class="form-control"
+            [formControl]="myForm.controls['productCode']">
         </div>
+        
 
-        <button type="submit" class="btn btn-primary">Submit</button> 
+        <button type="submit" class="btn btn-primary" >Submit</button> 
       </form>
     </div>
   </div>
